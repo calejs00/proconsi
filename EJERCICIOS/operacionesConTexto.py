@@ -32,7 +32,7 @@ def main():
     start = time.time() #empiezo a cronometrar el tiempo
     text3 = text * 1000 #concateno 1000 veces
     end = time.time() #paro de cronometrar
-    print("El texto ha tardado en concatenarse", end -start, "segundos")
+    print("El texto ha tardado en concatenarse", end -start, "segundos y la longitud final es", len(text3), "caracteres")
     return 
 
 if __name__ == "__main__":

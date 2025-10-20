@@ -16,7 +16,7 @@ def numDias(año):
 
 def main():
     #pido las fechas
-    fecha1 = str(input("Dame una fecha: "))
+    fecha1 = str(input("Dame una fecha en formato yyyy/mm/dd: "))
     fecha2 = str(input("Dame otra fecha: "))
 
     #convierto las fechas a formato date, para poder trabajar mejor con ellas
