@@ -40,10 +40,7 @@ def mayor(n1,n2):
 
 def main():
     #pido los numeros por pantalla
-    numDecimales = "c"
-    num1 = "a"
-    num2 = "b"
-    while (isinstance(numDecimales, str) or (int(numDecimales) and numDecimales<0)) or isinstance(num1, str) or isinstance(num2, str):
+    while True:
         num1 = input("Introduce la primera cantidad: ")
         if isinstance(num1, str):
             try:

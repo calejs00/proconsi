@@ -1,3 +1,7 @@
+#CASOS QUE HE TENIDO EN CUENTA
+#-Que el usuario meta un número no negativo para la cantidad de figuras
+#-Que el usuario meta un valor no numérico
+
 import random
 import math
 #lista con colores
@@ -63,9 +67,17 @@ class Triangulo(Figura):
 
 def main():
     #se piden la cantidad de figuras
-    nCir = int(input("Número de círculos: "))
-    nTri = int(input("Número de triángulos: "))
-    nCua = int(input("Número de cuadrados: "))
+    while True:
+        try:
+            nCir = int(input("Número de círculos: "))
+            nTri = int(input("Número de triángulos: "))
+            nCua = int(input("Número de cuadrados: "))
+            if nCir < 0 or nTri < 0 or nCua < 0:
+                print("Por favor, introduce números no negativos.")
+                continue
+            break
+        except ValueError:
+            print("Entrada inválida. Por favor, introduce números enteros.")
 
     #se crean, (ya de manera ordenada)
     figuras = []
