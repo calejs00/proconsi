@@ -26,6 +26,8 @@ def main():
         print(i)
     print('\n')
     text2 = text.replace("Proconsi", "Isnocorp") #reemplazo una palabra por otra
+    text2 = text.replace("proconsi", "Isnocorp") #reemplazo una palabra por otra
+
     print(text2)
     import time
 

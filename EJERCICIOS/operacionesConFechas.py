@@ -1,10 +1,16 @@
+#CASOS DE ENTRADA QUE HE TENIDO EN CUENTA
+#-Que el usuario meta una fecha en un formato incorrecto
+#-Que el usuario meta una fecha inválida (ej: 2023/13/09)
+#-Que el usuario meta la misma fecha dos veces
+#-Que el usuario meta cadenas vacías o de texto
+#-Fechas en años bisiestos
 import calendar
-from datetime import date
+import datetime as dt
 
 #función para calcular el inicio y fin de un año
 def inicioYfin(fecha):
-    inicio = date(fecha.year,1,1)
-    fin = date(fecha.year,12,31)
+    inicio = dt.date(fecha.year,1,1)
+    fin = dt.date(fecha.year,12,31)
     return inicio, fin
 
 #función para calcular los días de un año
@@ -13,17 +19,36 @@ def numDias(año):
         return 366
     else:
         return 365
+    
+def validar_fecha(fecha_str):
+    try:
+        fecha = dt.datetime.strptime(fecha_str, "%Y/%m/%d")
+        return fecha.date() 
+    except ValueError:
+        return None
 
 def main():
     #pido las fechas
-    fecha1 = str(input("Dame una fecha en formato yyyy/mm/dd: "))
-    fecha2 = str(input("Dame otra fecha: "))
+    while True:
+        fecha1_str = input("Dame una fecha en formato yyyy/mm/dd: ")
+        fecha1 = validar_fecha(fecha1_str)
+        if fecha1 is None:
+            print("Fecha inválida o formato incorrecto. Inténtalo de nuevo.")
+        else:
+            break
+    while True:
+        fecha2_str = input("Dame otra fecha: ")
+        fecha2 = validar_fecha(fecha2_str)
+        if fecha2 is None:
+            print("Fecha inválida o formato incorrecto. Inténtalo de nuevo.")
+        else:
+            break
 
-    #convierto las fechas a formato date, para poder trabajar mejor con ellas
-    año, mes, dia = map(int, fecha1.split("/"))
-    fecha1 = date(año, mes, dia)
-    año, mes, dia = map(int, fecha2.split("/"))
-    fecha2 = date(año, mes, dia)
+    # #convierto las fechas a formato date, para poder trabajar mejor con ellas
+    # año, mes, dia = map(int, fecha1.split("/"))
+    # fecha1 = date(año, mes, dia)
+    # año, mes, dia = map(int, fecha2.split("/"))
+    # fecha2 = date(año, mes, dia)
 
     print("La diferencia de días entre las dos fechas es", (fecha1-fecha2).days)
     inicio1, fin1 = inicioYfin(fecha1)
